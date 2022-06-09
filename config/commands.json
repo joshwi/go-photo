@@ -1,0 +1,5 @@
+[
+    "MATCH (n:photo) WHERE n.model='FC7303' SET n.category='DJI'",
+    "MATCH (n:photo) WHERE n.model=~'Canon.*' SET n.category='CANON'",
+    "MATCH (n:photo) WHERE n.model='HERO10 Black' SET n.category='GOPRO'"
+]

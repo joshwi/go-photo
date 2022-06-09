@@ -1,0 +1,1 @@
+00,15,30,45 * * * * sh /go-media/scripts/run.sh -s "/go-media/source" -t "/go-media/target" -f "jpg|png|cr2|mp4"
