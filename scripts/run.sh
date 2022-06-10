@@ -8,12 +8,14 @@ while getopts "s:t:f:" arg; do
   esac
 done
 
-cd /go-media
+# cd /go-media
 
 (
 set -e
 app/builds/transfer -source "$source" -target "$target" -files "$filetypes"
-. config/commands.txt
+app/builds/read
+app/builds/transactions
+app/builds/audit
 )
 
 if [ "$?" -ne 0 ]; then
