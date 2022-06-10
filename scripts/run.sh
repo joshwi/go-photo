@@ -10,7 +10,12 @@ done
 
 cd /go-media
 
+(
+set -e
 app/builds/transfer -source "$source" -target "$target" -files "$filetypes"
-app/builds/read
-app/builds/transactions -file "config/commands.json"
-app/builds/audit
+. config/commands.txt
+)
+
+if [ "$?" -ne 0 ]; then
+  echo "The world is on fire!"
+fi

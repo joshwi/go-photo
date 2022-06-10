@@ -86,8 +86,13 @@ func main() {
 				_, err := os.Stat(DIRECTORY + expected_filepath)
 				if os.IsNotExist(err) {
 					// log.Println(DIRECTORY+entry["filepath"], DIRECTORY+expected_filepath)
-					utils.Move(DIRECTORY+entry["filepath"], DIRECTORY+expected_filepath)
-					db.PutNode(session, "photo", entry["label"], []utils.Tag{{Name: "filepath", Value: expected_filepath}})
+					err := utils.Move(DIRECTORY+entry["filepath"], DIRECTORY+expected_filepath)
+					if err != nil {
+						log.Fatal(err)
+						os.Exit(1)
+					} else {
+						db.PutNode(session, "photo", entry["label"], []utils.Tag{{Name: "filepath", Value: expected_filepath}})
+					}
 				}
 			}
 		}

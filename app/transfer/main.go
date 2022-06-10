@@ -38,6 +38,7 @@ func main() {
 	if pass != tot {
 		diff := tot - pass
 		log.Fatalf("%v files failed to copy!", diff)
+		os.Exit(1)
 	}
 
 	logger.Logger.Info().Str("status", "end").Msg("TRANSFER")

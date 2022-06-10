@@ -25,7 +25,7 @@ var (
 func init() {
 
 	// Define flag arguments for the application
-	flag.StringVar(&filepath, `file`, ``, `Filename for DB transactions. Default: <empty>`)
+	flag.StringVar(&filepath, `file`, `config/commands.json`, `Filename for DB transactions. Default: config/commands.json`)
 	flag.Parse()
 
 	// Initialize logfile at user given path. Default: ./collection.log
@@ -51,6 +51,7 @@ func main() {
 		err := db.RunTransactions(session, commands)
 		if err != nil {
 			log.Fatal(err)
+			os.Exit(1)
 		}
 	}
 
